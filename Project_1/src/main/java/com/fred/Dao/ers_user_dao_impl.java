@@ -10,28 +10,23 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.fred.Beans.ers_user;
 import com.fred.util.ConnectionUtil;
 
-public class ers_user_dao_impl {
+public class ers_user_dao_impl implements ers_user_dao {
+	
+	private final static Logger logger = Logger.getLogger(ers_user_dao_impl.class);
 
 	@Override
 	public Boolean inserters_user(ers_user u) {
 		PreparedStatement stmt = null;
-		/*
-		 * Try-With-Resources
-		 * -Any object made with a try with resources block will be
-		 * closed automatically for you in the event of a crash, or
-		 * successful execution. So you are not required to 
-		 * worry about invoking the " .close()" on any objects
-		 * created with the try block
-		 * -NOTE: requires the object to implement "AutoCloseable"
-		 */
+
 		try(Connection conn = ConnectionUtil.getConnection()) {
-			stmt = conn.prepareStatement("INSERT INTO ers_users VALUES(?,?,?,?,?,?)"); 
-			//				QUESTION MARL INDEX:					   1 2 3 4 5 6
-			// this is where
-			// you would write a line of SQL, but in Java
+			stmt = conn.prepareStatement("INSERT INTO ers_users VALUES(?,?,?,?,?,?,?)"); 
+//																	   1 2 3 4 5 6 7
+
 			stmt.setInt(1, u.getErs_users_id());
 			stmt.setString(2, u.getErs_username());
 			stmt.setString(3, u.getErs_password());
@@ -40,8 +35,14 @@ public class ers_user_dao_impl {
 			stmt.setString(6, u.getUser_email());
 			stmt.setInt(7, u.getUser_role_id());
 			stmt.execute();
+			
+			logger.info("New owner insert SUCCESS on user: " + u.getErs_username());
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
+			
+			logger.error("New owner insert FAILED on user: " + u.getErs_username());
+			
 			return false;
 		}finally {
 			close(stmt);
@@ -74,7 +75,7 @@ public class ers_user_dao_impl {
 			close(rs);
 			close(stmt);
 		}
-		return custa;
+		return ers_userss;
 	}
 
 	@Override
@@ -98,9 +99,9 @@ public class ers_user_dao_impl {
 						rs.getInt("ers_user_id"), // grab data by name
 						rs.getString("ers_user_username"), // or we can grab by index
 						rs.getString("ers_user_password"),
-						rs.getString("fname"),
-						rs.getString("lname"),
-						rs.getString("email"),
+						rs.getString("user_fname"),
+						rs.getString("user_lname"),
+						rs.getString("user_email"),
 						rs.getInt("user_role_id")
 						));
 			}
@@ -110,16 +111,13 @@ public class ers_user_dao_impl {
 			close(rs);
 			close(stmt);
 		}
-		return custas;
+		return ers_userss;
 	}
 
-	@Override
-	public Boolean updateers_userById(Integer id) {
-		return null;
-	}
+
 
 	@Override
-	public Boolean deleteers_userById(Integer id) {
+	public Boolean updateers_usersById(Integer id) {
 		PreparedStatement stmt = null;
 		try(Connection conn = ConnectionUtil.getConnection()) {
 			stmt = conn.prepareStatement("DELETE FROM ers_users WHERE ers_users_id = ?"); 
@@ -133,6 +131,42 @@ public class ers_user_dao_impl {
 		}
 		return true;
 	}
+	
+	@Override
+	public  ers_user selecters_userByUsername(String username) {
+		ers_user usr = null;
+		ResultSet rs = null;
+		PreparedStatement ps = null;
+		try(Connection conn = ConnectionUtil.getConnection()){
+			ps = conn.prepareStatement("SELECT * FROM ers_user WHERE LOWER(ers_username) = ?");
+			ps.setString(1, username);
+			rs = ps.executeQuery();
+			
+			while(rs.next()){
+				usr = new ers_user(
+							rs.getInt(1),
+							rs.getString(2),
+							rs.getString(3),
+							rs.getString(4),
+							rs.getString(5),
+							rs.getString(6),
+							rs.getInt(7)
+						);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			close(rs);
+			close(ps);
+		}
+		return usr;
+	}
+
+
+
+
+
+
 	
 	
 }

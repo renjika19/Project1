@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert Polka-Pun here...</title>
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!-- Bring Bootstrap 4 libraries -->
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script src="./resources/javascript/formvalidation.js"></script>
+<script src="./resources/javascript/ajax.js"></script>
+
+<!-- The above makes use of a CDN (Content Delivery Network) It will take the files directly
+	from the link posted above and use it in the project. -->
+	
+<!-- 
+<link rel="stylesheet" type="text/css" href="./resources/css/main.css" />
+-->
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="jumbotron">
+			<h1>Welcome to the Polka-Parka!</h1>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-6">
+				<div class=rsection>
+					<h3>Register</h3>
+					<hr>
+					<div id="errorDiv"></div>
+
+					<form method=POST action="register.do" id=register
+						onsubmit="return validateRegistration()">
+						<div class="input-group mb-3" id="usernameDiv">
+							<div class="input-group-prepend">
+								<span class="input-group-text">USERNAME</span>
+							</div>
+							<input type="text" class="form-control" placeholder="USERNAME"
+								name="username" id=username 
+								onchange="validateUsername()" required>
+						</div>
+
+						<div class="input-group mb-3" id="passwordDiv">
+							<div class="input-group-prepend">
+								<span class="input-group-text">PASSWORD</span>
+							</div>
+							<input type="password" class="form-control"
+								placeholder="PASSWORD" name="password1" id=password1 required>
+
+
+							<div class="input-group-prepend">
+								<span class="input-group-text">CONFIRM</span>
+							</div>
+							<input type="password" class="form-control"
+								placeholder="CONFIRM PASSWORD" name="password2" id=password2
+								required>
+						</div>
+
+						<div class="input-group mb-3" id="nameDiv">
+							<div class="input-group-prepend">
+								<span class="input-group-text">NAME</span>
+							</div>
+							<input type="text" class="form-control" placeholder="NAME"
+								name="name" id=name required>
+						</div>
+
+						<select class="form-control form-control-sm" id="polkalist">
+							<option value="" id=listdefault>--LOADING POLKAMANS--</option>
+						</select>
+						<br>
+
+						<button class="btn btn-success">SUBMIT LOGIN</button>
+					</form>
+				</div>
+			</div>
+
+			<div class="col-sm-6">
+				<div class=rsection>
+					<h3>LOGIN</h3>
+					<hr>
+					<form method="POST" action="login.do">
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">USERNAME</span>
+							</div>
+							<input type="text" class="form-control" placeholder="USERNAME"
+								name="username" required>
+						</div>
+
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">PASSWORD</span>
+							</div>
+							<input type="password" class="form-control"
+								placeholder="PASSWORD" name="password" required>
+						</div>
+
+						<button class="btn btn-success">SUBMIT LOGIN</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

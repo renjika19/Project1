@@ -13,15 +13,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.fred.Beans.ers_user;
 
-import com.fred.Services.ers_userService;
 
-public class Fetchers_usersServelet {
+import com.fred.Services.ers_user_service;
+
+public class Fetchers_users_servelet {
 	private static final long serialVersionUID = 1L;
     
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Fetchers_usersServelet() {
+    public Fetchers_users_servelet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,7 +39,7 @@ public class Fetchers_usersServelet {
 		 * of the data. This will make for handling any data passed from java
 		 * to javascript significantly easier to work with
 		 */
-		List<ers_user> ers_userss = new ers_userService().getAllers_users();
+		List<ers_user> ers_userss = new ers_user_service().getAllers_users();
 		ObjectMapper om = new ObjectMapper();
 		
 		//tell the client that it will be receiving JSON formatted data
