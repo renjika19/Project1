@@ -137,4 +137,25 @@ public class ers_user {
 
 
 
+		public ers_user(String ers_username, String ers_password, String user_email) {
+			super();
+			this.ers_username = ers_username;
+			this.ers_password = ers_password;
+			this.user_email = user_email;
+		}
+
+
+
+		public ers_user(String ers_username, String ers_password, String user_fname, String user_lname,
+				String user_email) {
+			super();
+			this.ers_username = ers_username;
+			this.ers_password = ers_password;
+			this.user_fname = user_fname;
+			this.user_lname = user_lname;
+			this.user_email = user_email;
+		}
+
+
+
 }

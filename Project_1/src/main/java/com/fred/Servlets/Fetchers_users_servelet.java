@@ -16,7 +16,7 @@ import com.fred.Beans.ers_user;
 
 import com.fred.Services.ers_user_service;
 
-public class Fetchers_users_servelet {
+public class Fetchers_users_servelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
     /**
@@ -39,7 +39,7 @@ public class Fetchers_users_servelet {
 		 * of the data. This will make for handling any data passed from java
 		 * to javascript significantly easier to work with
 		 */
-		List<ers_user> ers_userss = new ers_user_service().getAllers_users();
+		List<ers_user> ers_userss = new ers_user_service().selectAllers_users();
 		ObjectMapper om = new ObjectMapper();
 		
 		//tell the client that it will be receiving JSON formatted data

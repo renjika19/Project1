@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fred.Services.ers_user_service;
 
-public class ConfirmationLoginAJAX extends HttpServlet {
+public class ConfirmLoginAJAX extends HttpServlet {
 	private static long serialVersionUID = 1L;
 	
 	
-	public ConfirmationLoginAJAX() {
+	public ConfirmLoginAJAX() {
 		super();
 	}
 	
@@ -28,7 +28,7 @@ public class ConfirmationLoginAJAX extends HttpServlet {
 		response.setContentType("text/plain");
 		PrintWriter out = response.getWriter();
 		
-		if(new ers_user_service().ers_usernameExists(username)){
+		if(new ers_user_service().usernameExists(username)){
 			out.print("USERNAME TAKEN");
 			return;
 		}else {

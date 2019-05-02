@@ -24,16 +24,16 @@ public class ers_user_dao_impl implements ers_user_dao {
 		PreparedStatement stmt = null;
 
 		try(Connection conn = ConnectionUtil.getConnection()) {
-			stmt = conn.prepareStatement("INSERT INTO ers_users VALUES(?,?,?,?,?,?,?)"); 
+			stmt = conn.prepareStatement("INSERT INTO ers_users VALUES(?,?,?,?,?,?)"); 
 //																	   1 2 3 4 5 6 7
 
-			stmt.setInt(1, u.getErs_users_id());
-			stmt.setString(2, u.getErs_username());
-			stmt.setString(3, u.getErs_password());
-			stmt.setString(4, u.getUser_fname());
-			stmt.setString(5, u.getUser_lname());
-			stmt.setString(6, u.getUser_email());
-			stmt.setInt(7, u.getUser_role_id());
+
+			stmt.setString(1, u.getErs_username());
+			stmt.setString(2, u.getErs_password());
+			stmt.setString(3, u.getUser_fname());
+			stmt.setString(4, u.getUser_lname());
+			stmt.setString(5, u.getUser_email());
+			stmt.setInt(6, u.getUser_role_id());
 			stmt.execute();
 			
 			logger.info("New owner insert SUCCESS on user: " + u.getErs_username());
@@ -133,13 +133,13 @@ public class ers_user_dao_impl implements ers_user_dao {
 	}
 	
 	@Override
-	public  ers_user selecters_userByUsername(String username) {
+	public  ers_user selecters_userByUsername(String ers_username) {
 		ers_user usr = null;
 		ResultSet rs = null;
 		PreparedStatement ps = null;
 		try(Connection conn = ConnectionUtil.getConnection()){
-			ps = conn.prepareStatement("SELECT * FROM ers_user WHERE LOWER(ers_username) = ?");
-			ps.setString(1, username);
+			ps = conn.prepareStatement("SELECT * FROM ers_users WHERE LOWER (ers_username) = ?");
+			ps.setString(1, ers_username);
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
@@ -160,6 +160,13 @@ public class ers_user_dao_impl implements ers_user_dao {
 			close(ps);
 		}
 		return usr;
+	}
+
+	@Override
+	public boolean registerers_user(String ers_username, String ers_password, String user_fname, String user_lname,
+			String user_email, Integer user_role_id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 

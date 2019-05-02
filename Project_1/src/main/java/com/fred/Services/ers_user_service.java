@@ -13,28 +13,30 @@ public class ers_user_service {
 	
 	private ers_user_dao ud = null;
 
-	public boolean confirmLogin(String username, String password) {
+	public boolean confirmLogin(String ers_username, String ers_password) {
 		ers_user_dao_impl ud = new ers_user_dao_impl();
 		ers_user usr = null;
-		
-		if((usr=ud.selecters_userByUsername(username.toLowerCase()))!=null){
-			if(usr.getErs_password().equals(password)) {
+		System.out.println(ers_username);
+		System.out.println(ers_password);
+		if((usr=ud.selecters_userByUsername(ers_username.toLowerCase()))!=null){
+			System.out.println(ers_username);
+			if(usr.getErs_password().equals(ers_password)) {
 				return true;
 			}
 		}
 		return false;
 	}
 	
-	public boolean ers_usernameExists(String username) {
-		if(new ers_user_dao_impl().selecters_userByUsername(username)!=null) {
+	public boolean ers_usernameExists(String ers_username) {
+		if(new ers_user_dao_impl().selecters_userByUsername(ers_username)!=null) {
 			return true;
 		}
 		return false;
 	}
 	
-	public boolean registerers_user(String username, String password, 
-			String name) {
-		if(new ers_user_dao_impl().inserters_user(new ers_user(null, name,null,username,password,null))) {
+	public boolean registerers_user(String ers_username, String ers_password, String user_fname, String user_lname,
+			String user_email, Integer user_role_id) {
+		if(new ers_user_dao_impl().inserters_user(new ers_user(ers_username, ers_password,user_fname,user_lname,user_email,user_role_id))) {
 			return true;
 		}
 		return false;

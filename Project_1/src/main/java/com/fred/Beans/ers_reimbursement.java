@@ -1,8 +1,10 @@
 package com.fred.Beans;
 
 import java.sql.Blob;
+import java.sql.Timestamp;
 
-import com.sun.jmx.snmp.Timestamp;
+
+
 
 public class ers_reimbursement {
 	private Integer reimb_id;
@@ -56,6 +58,8 @@ public class ers_reimbursement {
 		this.reimb_status_id = reimb_status_id;
 		this.reimb_type_id = reimb_type_id;
 	}
+	
+	
 
 
 
@@ -186,6 +190,54 @@ public class ers_reimbursement {
 				+ ", reimb_receipt=" + reimb_receipt + ", reimb_author=" + reimb_author + ", reimb_resolver="
 				+ reimb_resolver + ", reimb_status_id=" + reimb_status_id + ", reimb_type_id=" + reimb_type_id + "]";
 	}
+
+
+
+	public ers_reimbursement(Integer reimb_id, Double reimb_amount, Timestamp reimb_submitted, String reimb_description,
+			String reimb_author, Integer reimb_status_id, Integer reimb_type_id) {
+		super();
+		this.reimb_id = reimb_id;
+		this.reimb_amount = reimb_amount;
+		this.reimb_submitted = reimb_submitted;
+		this.reimb_description = reimb_description;
+		this.reimb_author = reimb_author;
+		this.reimb_status_id = reimb_status_id;
+		this.reimb_type_id = reimb_type_id;
+	}
+
+
+
+	public ers_reimbursement(Integer reimb_id, Double reimb_amount, Timestamp reimb_submitted, Timestamp reimb_resolved,
+			String reimb_description, Blob reimb_receipt, String reimb_resolver, Integer reimb_status_id,
+			Integer reimb_type_id) {
+		super();
+		this.reimb_id = reimb_id;
+		this.reimb_amount = reimb_amount;
+		this.reimb_submitted = reimb_submitted;
+		this.reimb_resolved = reimb_resolved;
+		this.reimb_description = reimb_description;
+		this.reimb_receipt = reimb_receipt;
+		this.reimb_resolver = reimb_resolver;
+		this.reimb_status_id = reimb_status_id;
+		this.reimb_type_id = reimb_type_id;
+	}
+
+
+
+	public ers_reimbursement(Integer reimb_id, Double reimb_amount, Timestamp reimb_submitted, Timestamp reimb_resolved,
+			String reimb_description, String reimb_resolver, Integer reimb_status_id, Integer reimb_type_id) {
+		super();
+		this.reimb_id = reimb_id;
+		this.reimb_amount = reimb_amount;
+		this.reimb_submitted = reimb_submitted;
+		this.reimb_resolved = reimb_resolved;
+		this.reimb_description = reimb_description;
+		this.reimb_resolver = reimb_resolver;
+		this.reimb_status_id = reimb_status_id;
+		this.reimb_type_id = reimb_type_id;
+	}
+
+
 
 
 

@@ -13,8 +13,8 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-<script src="./resources/javascript/formvalidation.js"></script>
-<script src="./resources/javascript/ajax.js"></script>
+<!--  <script src="Project_1/src/main/resources/javascript/formvalidation.js"></script>-->
+
 
 <!-- The above makes use of a CDN (Content Delivery Network) It will take the files directly
 	from the link posted above and use it in the project. -->
@@ -26,7 +26,7 @@
 <body>
 	<div class="container-fluid">
 		<div class="jumbotron">
-			<h1>Welcome to the Polka-Parka!</h1>
+			<h1>ReReReReimbursements</h1>
 		</div>
 
 		<div class="row">
@@ -36,15 +36,15 @@
 					<hr>
 					<div id="errorDiv"></div>
 
-					<form method=POST action="register.do" id=register
-						onsubmit="return validateRegistration()">
+					<form method=POST action="Register_servlet" id=register>
+						<!--  onsubmit="return validateRegistration()"-->
 						<div class="input-group mb-3" id="usernameDiv">
 							<div class="input-group-prepend">
 								<span class="input-group-text">USERNAME</span>
 							</div>
 							<input type="text" class="form-control" placeholder="USERNAME"
-								name="username" id=username 
-								onchange="validateUsername()" required>
+								name="ers_username" id=ers_username required>
+							<!-- 	onchange="validateUsername()"--> 
 						</div>
 
 						<div class="input-group mb-3" id="passwordDiv">
@@ -52,29 +52,55 @@
 								<span class="input-group-text">PASSWORD</span>
 							</div>
 							<input type="password" class="form-control"
-								placeholder="PASSWORD" name="password1" id=password1 required>
-
-
+								placeholder="PASSWORD" name="ers_password1" id=ers_password1 required>
+								
+							<br>	
+							
 							<div class="input-group-prepend">
 								<span class="input-group-text">CONFIRM</span>
 							</div>
 							<input type="password" class="form-control"
-								placeholder="CONFIRM PASSWORD" name="password2" id=password2
+								placeholder="CONFIRM PASSWORD" name="ers_password2" id=ers_password2
 								required>
 						</div>
-
-						<div class="input-group mb-3" id="nameDiv">
+						
+							<br>
+									<div class="input-group mb-3" id="firstNameDiv">
 							<div class="input-group-prepend">
-								<span class="input-group-text">NAME</span>
+								<span class="input-group-text">FIRST NAME</span>
 							</div>
-							<input type="text" class="form-control" placeholder="NAME"
-								name="name" id=name required>
+							<input type="text"  placeholder="First Name" class="form-control"
+								name="user_fname" id=user_fname required>
+						</div>
+						<div class="input-group mb-3" id="lastNameDiv">
+							<div class="input-group-prepend">
+								<span class="input-group-text">LAST NAME</span>
+							</div>
+							<input type="text"  placeholder="Last Name" class="form-control"
+								name="user_lname" id=user_lname required>
 						</div>
 
-						<select class="form-control form-control-sm" id="polkalist">
-							<option value="" id=listdefault>--LOADING POLKAMANS--</option>
-						</select>
-						<br>
+
+						
+						
+						<div class="input-group mb-3" id="nameDiv">
+							<div class="input-group-prepend">
+								<span class="input-group-text">EMAIL</span>
+							</div>
+							<input type="text" class="form-control" placeholder="Email"
+								name="user_email" id=user_email required>
+						</div>
+						
+						<div class="input-group mb-3" id="nameDiv">
+							<div class="input-group-prepend">
+								<span class="input-group-text">User</span>
+							<select required>
+							  <option value="1">Employee</option>
+							  <option value="2">Admin</option>
+							</select>
+					</div>
+							</div>
+
 
 						<button class="btn btn-success">SUBMIT LOGIN</button>
 					</form>
@@ -85,13 +111,13 @@
 				<div class=rsection>
 					<h3>LOGIN</h3>
 					<hr>
-					<form method="POST" action="login.do">
+					<form method="POST" action="LoginServlet">
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text">USERNAME</span>
 							</div>
 							<input type="text" class="form-control" placeholder="USERNAME"
-								name="username" required>
+								name="ers_username" required>
 						</div>
 
 						<div class="input-group mb-3">
@@ -99,9 +125,9 @@
 								<span class="input-group-text">PASSWORD</span>
 							</div>
 							<input type="password" class="form-control"
-								placeholder="PASSWORD" name="password" required>
+								placeholder="PASSWORD" name="ers_password" required>
 						</div>
-
+						
 						<button class="btn btn-success">SUBMIT LOGIN</button>
 					</form>
 				</div>

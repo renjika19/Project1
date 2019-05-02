@@ -64,7 +64,7 @@ public class FrontController extends HttpServlet {
 			}
 			break;
 		case "register":
-			request.getRequestDispatcher("RegisterServlet")
+			request.getRequestDispatcher("Register_servlet")
 			.forward(request, response);
 			break;
 		default:
